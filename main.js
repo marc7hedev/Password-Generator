@@ -71,4 +71,4 @@ clipboardEl.addEventListener("click", async (e) => {
     } else {
         alert("Genere un password para copiar al portapapeles");
     }
-})
+});
