@@ -23,8 +23,7 @@ const fieldsArray = [
     {
        field: specialElement,
        getChar: getSpecialChar 
-    },
-    
+    }    
 ];
 
 //Las siguientes funciones son valores ASCII
@@ -53,7 +52,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     const length = lengthElement.value;
     let generatedPassword = "";
-    const checkedFields = fieldsArray.filter(({ field }) => field.check);
+    const checkedFields = fieldsArray.filter(({ field }) => field.checked);
 
     for (i= 0; i < length; i++){
         const index = Math.floor(Math.random() * checkedFields.length);
@@ -63,3 +62,13 @@ form.addEventListener("submit", (e) => {
 
     resultElement.value = generatedPassword;
 });
+
+clipboardEl.addEventListener("click", async (e) => {
+    const text = resultElement.value;
+    if(text){
+        await navigator.clipboard.writeText(text);
+        alert("¡Copiado al portapapeles!");
+    } else {
+        alert("Genere un password para copiar al portapapeles");
+    }
+})
